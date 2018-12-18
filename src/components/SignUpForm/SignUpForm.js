@@ -1,20 +1,40 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import firebase from 'firebase'
 
 class SignUpForm extends Component {
-state = {
+  state = {
     email: "",
     password: "",
     name: "",
     error: null
-}
+  };
 
+  handleSubmit = event => {
+    event.preventDefault();
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then(data => {
+        firebase.database.ref("/users//" + data.user.uid).set({
+          name: this.state.name
+        });
+      });
+      this.setState({
+        error: null
+      }).catch(error => this.setState({ error }))
 
+  };
 
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
 
   render() {
     return (
       <div className="SignUpForm">
-         <form onSubmit={this.handleSubmit} className="SignUpForm">
+        <form onSubmit={this.handleSubmit} className="SignUpForm">
           {this.state.error && <p>{this.state.error.message}</p>}
           <input
             placeholder="Enter email"
@@ -36,10 +56,9 @@ state = {
             value={this.state.name}
             onChange={this.handleChange}
           />
-            <button>Sign up</button>          
+          <button>Sign up</button>
         </form>
       </div>
-      
     );
   }
 }

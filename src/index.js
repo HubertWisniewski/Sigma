@@ -3,13 +3,24 @@ import ReactDOM from "react-dom";
 import { Router } from "react-router-dom";
 import "./index.css";
 import App from "./components/App/App";
-import "./setupFirebase"
+import setupFirebase from "./setupFirebase"
+import firebase from 'firebase'
 import * as serviceWorker from "./serviceWorker";
 
+firebase.initializeApp(setupFirebase)
+
+firebase.auth().onAuthStateChanged(user => {
+  console.log(user)
+} )
+
+firebase.auth().signInWithEmailAndPassword("janusz@gmail.com", "test1234").then(
+  firebase.auth().signOut()
+)
+
 ReactDOM.render(
-  <Router>
+  
     <App />
-  </Router>,
+ ,
 
   document.getElementById("root")
 );
