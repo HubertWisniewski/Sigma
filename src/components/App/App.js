@@ -28,9 +28,9 @@ class App extends Component {
 
   
 
-  // componentWillUnmount() {
-  //   this.unsubscribe()
-  // }
+  componentWillUnmount() {
+    this.unsubscribe()
+  }
 
   render() {
     return (

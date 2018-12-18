@@ -5,20 +5,18 @@ import firebase from 'firebase'
 class HomeView extends Component {
 
 
-componentDidMount() {
-    this.showMe()
+
+
+    
+logOut = () => {
+    firebase.auth().signOut()
 }
-
-    showMe = () => {
-        console.log(this.props.user)
-    }
-
 
   render() {
     return (
       <div className="App">
-     <h1>Coś</h1>
-        <button onClick={() => firebase.auth().signOut}>Sign Out</button>
+     <h1>Siema {this.props.user === null ? "" : this.props.user.name }</h1>
+        <button onClick={() => this.logOut()}>Sign Out</button>
       
     </div>
     );
