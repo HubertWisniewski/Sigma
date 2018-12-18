@@ -9,19 +9,16 @@ class SignUpForm extends Component {
     error: null
   };
 
-  handleSubmit = event => {
+  handleSubmit = event => { 
     event.preventDefault();
     firebase
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then(data => {
-        firebase.database.ref("/users//" + data.user.uid).set({
+        firebase.database().ref("users/" + data.user.uid).set({
           name: this.state.name
         });
-      });
-      this.setState({
-        error: null
-      }).catch(error => this.setState({ error }))
+      }).catch(error => this.setState({ error })) 
 
   };
 

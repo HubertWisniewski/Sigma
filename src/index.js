@@ -1,26 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Router } from "react-router-dom";
 import "./index.css";
 import App from "./components/App/App";
-import setupFirebase from "./setupFirebase"
-import firebase from 'firebase'
+import setupFirebase from "./setupFirebase";
+import { BrowserRouter as Router } from 'react-router-dom'
+import firebase from "firebase";
 import * as serviceWorker from "./serviceWorker";
+import Auth from "./components/Auth/Auth";
 
-firebase.initializeApp(setupFirebase)
+firebase.initializeApp(setupFirebase);
 
-firebase.auth().onAuthStateChanged(user => {
-  console.log(user)
-} )
 
-firebase.auth().signInWithEmailAndPassword("janusz@gmail.com", "test1234").then(
-  firebase.auth().signOut()
-)
 
 ReactDOM.render(
-  
+  <Auth>
+    <Router>
     <App />
- ,
+    </Router>
+  </Auth>,
 
   document.getElementById("root")
 );
