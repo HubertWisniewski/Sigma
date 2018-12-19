@@ -4,21 +4,18 @@ import firebase from "firebase";
 
 class ArenaView extends Component {
 
-componentDidMount() {
-    console.log(this.props.arenas[this.props.arenaId])
-}
+
 
   render() {
-    const arenaId = parseInt(this.props.arenaId)
-    const arena = this.props.arenas[arenaId]
+    const arena = this.props.arenas.filter(arena => arena.id === this.props.arenaId)
 
     return (
       <div className="Arenas">
-        {arena === 'undefined' ? (
+        {arena === null ? (
             <p>Arena not found</p>
         ) : (
             <div> 
-            
+            <h1>Found {console.log(arena)}</h1>
             </div>    
 
         )}

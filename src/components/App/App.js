@@ -9,7 +9,7 @@ import ArenaView from "../ArenaView/ArenaView";
 class App extends Component {
   state = {
     user: null,
-    arenas: []
+    arenas: null
   };
 
   componentDidMount() {
@@ -20,8 +20,8 @@ class App extends Component {
           .ref("users/" + user.uid)
           .once("value")
           .then(snapshot => {
-            // let fetchedUser = { uid: user.uid, ...(snapshot.val() || {})}
-            this.setState({ user: snapshot.val() || {} });
+            let fetchedUser = { uid: user.uid, ...(snapshot.val() || {})}
+            this.setState({ user: fetchedUser});
             // console.log(this.state.user.name)
           });
       }
@@ -37,6 +37,7 @@ class App extends Component {
           ...val
         }));
         this.setState({ arenas });
+        console.log(snapshot.val())
       });
   }
 
