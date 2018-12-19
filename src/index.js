@@ -3,19 +3,17 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./components/App/App";
 import setupFirebase from "./setupFirebase";
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router } from "react-router-dom";
 import firebase from "firebase";
 import * as serviceWorker from "./serviceWorker";
 import Auth from "./components/Auth/Auth";
 
 firebase.initializeApp(setupFirebase);
 
-
-
 ReactDOM.render(
   <Auth>
     <Router>
-    <App />
+      <App />
     </Router>
   </Auth>,
 
