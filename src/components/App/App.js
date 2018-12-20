@@ -9,7 +9,7 @@ import ArenaView from "../ArenaView/ArenaView";
 class App extends Component {
   state = {
     user: null,
-    arenas: null
+    arenas: []
   };
 
   componentDidMount() {

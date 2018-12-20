@@ -6,19 +6,9 @@ import { Link } from 'react-router-dom'
 class ArenasView extends Component {
  
 
-  // componentDidMount() {
-  //   firebase
-  //   .database()
-  //   .ref('/arenas')
-  //   .on('value', snapshot => {
-  //     const value = snapshot.val()
-  //     const arenas = Object.entries(value || {}).map(([key, val]) => ({
-  //       id: key,
-  //       ...val,
-  //     }))
-  //     this.setState({ arenas })
-  //   })
-  // }
+  componentDidMount() {
+  console.log(this.props)
+  }
 
   
 
@@ -35,7 +25,7 @@ class ArenasView extends Component {
         <CreateArena/>
         <div className="ArenaList">
         <ul>
-        { this.props.arenas === null || {} ? (
+        { this.props.arenas === null ? (
           <p>There are no arenas yet</p>
         ) :
           (
