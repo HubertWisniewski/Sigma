@@ -18,12 +18,7 @@ class ArenaView extends Component {
         ) : (
             <div> 
             <h1>Found {arena[0].title}</h1>
-            {this.props.user === null ? ( <p>Loadnig</p>) :
-            (
-              this.props.user.name
-            )
-            
-          }
+            {this.props.user && this.props.user.name}
             
             </div>    
 

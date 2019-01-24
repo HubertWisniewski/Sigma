@@ -5,6 +5,7 @@ import HomeView from "../HomeView/HomeView";
 import firebase from "firebase";
 import ArenasView from "../ArenasView/ArenasView";
 import ArenaView from "../ArenaView/ArenaView";
+import TrainingView from "../TrainingView/TrainingView";
 
 class App extends Component {
   state = {
@@ -51,6 +52,7 @@ class App extends Component {
           <ul>
             <li>
               <NavLink to="/">Home</NavLink>
+              <NavLink to="/training">Training</NavLink>
               <NavLink to="/arena">Arena</NavLink>
             </li>
           </ul>
@@ -70,6 +72,11 @@ class App extends Component {
               arenaId={arenaId}
             />
           )}
+        />
+        <Route
+          exact
+          path="/training"
+          component={() => <TrainingView user={this.state.user} />}
         />
         <Route
           exact
