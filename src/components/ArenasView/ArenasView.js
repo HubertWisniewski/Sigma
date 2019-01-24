@@ -25,7 +25,7 @@ class ArenasView extends Component {
         <CreateArena/>
         <div className="ArenaList">
         <ul>
-        { this.props.arenas === null ? (
+        { this.props.arenas.length === 0 ? (
           <p>There are no arenas yet</p>
         ) :
           (

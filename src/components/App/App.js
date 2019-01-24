@@ -37,7 +37,6 @@ class App extends Component {
           ...val
         }));
         this.setState({ arenas });
-        console.log(snapshot.val())
       });
   }
 
@@ -67,6 +66,7 @@ class App extends Component {
           }) => (
             <ArenaView
               arenas={this.state.arenas}
+              user={this.state.user}
               arenaId={arenaId}
             />
           )}

@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import firebase from "firebase";
 
 
 class ArenaView extends Component {
 
+  componentDidMount() {
+    console.log(this.props.user)
+  }
 
 
   render() {
@@ -11,11 +13,18 @@ class ArenaView extends Component {
 
     return (
       <div className="Arenas">
-        {arena === null ? (
-            <p>Arena not found</p>
+        {arena.length === 0 ? (
+            <p>Loading arena</p>
         ) : (
             <div> 
-            <h1>Found {console.log(arena)}</h1>
+            <h1>Found {arena[0].title}</h1>
+            {this.props.user === null ? ( <p>Loadnig</p>) :
+            (
+              this.props.user.name
+            )
+            
+          }
+            
             </div>    
 
         )}
